@@ -10,32 +10,51 @@
     <title>Piupiuwer - Feed</title>
 </head>
 <body>
-    <header id='BarraSuperior2'>
+    <header id='topBar'>
         <div class='logo'>
             <img alt='logo' src='imagens/logo.svg' />
             <h1>Piupiuwer</h1>
         </div>
-        <div class='ferramentaContainer'>
-            <div class='pesquisaBlock pesquisaBlock-m'>
-                    <div id='searchContainer'><input placeholder='Pesquisar'/></div>
+        <div class='toolsContainer'>
+            <div class='searchBlock'>
+                <input placeholder='Pesquisar' class='searchDefault'/>
+                <div class='searchResultsDefault'></div>
             </div>
-            <div class='sair sair-m'>
+            <div class='logOut'>
                 <img alt='logout' src='imagens/logout.svg' />
                 <p>Sair</p>
             </div>
         </div>
     </header>
-    <div id='feedPageContent'>
-    <div class='menu'>
-        <ul>
-            <li><a class='MenuItemContainer'><img src='./imagens/botao-home.svg' alt='icon-home'/><p>Feed</p></a></li>
-            <li><a class='MenuItemContainer'><img src='imagens/amizade (1).svg' alt='amigos'/><p>Amigos</p></a></li>
-            <li><a class='MenuItemContainer'><img src="imagens/padlock.svg"/> <p>Alterar senha</p></a></li>
-        </ul>
-    </div>
-        <div id='feed'>
-            <p>teste</p>
+        <div id='feedPageContent'>
+            <div class='menu'>
+                <ul>
+                    <li><a class='MenuItemContainer'><img src='./imagens/botao-home.svg' alt='icon-home'/><p>Feed</p></a></li>
+                    <li><a class='MenuItemContainer'><img src='imagens/amizade (1).svg' alt='amigos'/><p>Amigos</p></a></li>
+                    <li><a class='MenuItemContainer'><img src="imagens/padlock.svg"/> <p>Alterar senha</p></a></li>
+                </ul>
+            </div>
+                <div id='feed'>
+                    <div id='publishPiu'>
+                        <div id='publishPiuHeader'><p>Publicar um novo Piu</p></div>
+                        <div id='publishField'>
+                            <div id='photoPublish'></div>
+                            <div id='postWriteContainer'>
+                                <textarea id='postWrite'></textarea>
+                                <span class='postWriteErrorHidden'></span>
+                            </div>
+
+                        </div>
+                        <div id='interactionBlockPublish'>
+                            <span id='cont'>0/140</span>
+                            <button id='publishButton'>PUBLICAR</button>
+                            <button id='cleanButton'>LIMPAR</button>
+                        </div>
+                    </div>
+                    <div id='postArea'>
+                    </div>
+                </div>
         </div>
-    </div>
+    <script src='script.js'></script>
 </body>
 </html>
