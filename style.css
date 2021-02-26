@@ -445,7 +445,7 @@ a {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        margin-top: 4%;
+        margin-top: 9%;
     }
 
     .cont {
@@ -485,6 +485,7 @@ a {
     }
 
     #cleanButton{
+        display: flex;
         border-radius: 8px;
         background-color: #00B4D8;
         font-family: 'Poppins', sans-serif;
@@ -497,10 +498,18 @@ a {
         outline: none;
         border: none;
         box-shadow: 0 0.15vw #999;
+        align-items: center;
     }
 
     .cleanButton {
         font-size: 14px;
+    }
+
+    .cleanIcon {
+        width: 10px;
+        height: auto;
+        filter: invert(1);
+        margin-right: 5%;
     }
 
     #cleanButton:active {
@@ -944,6 +953,7 @@ a {
         .postWriteErrorHiddenTablet {
             font-size: 14px;
             left: 4%;
+            top: 85%;
         }
 
         .postWriteContainerTablet {
@@ -1015,6 +1025,13 @@ a {
             width: 176px;
         }
 
+        .cleanIconMobile {
+            height: auto;
+            width: 16px;
+        }
+
+        
+
 
         #publishPiuHeader p {
             font-size: 20px;
@@ -1036,6 +1053,11 @@ a {
         .postWriteContainerMobile {
             height: 30vw;
         }
+        
+
+        .postWriteContainerMobile span {
+            font-size: 12px;
+        }
 
         .postWriteContainerMobile textArea {
             font-size: 14px;
@@ -1046,7 +1068,7 @@ a {
         }
 
         .logoMobile {
-            margin-left: 5vw;
+            margin-left: 3vw;
         }
 
         .logoMobile h1 {
