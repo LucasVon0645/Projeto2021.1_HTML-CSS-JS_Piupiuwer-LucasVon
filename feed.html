@@ -8,61 +8,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <title>Piupiuwer - Feed</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header class='topBar topBarLargeHeight'>
-        <div class='logo logoLarge logoMedium logoTablet'>
+        <div class='logo logoLarge logoMedium logoTablet logoMobile logoMobileSmall'>
+            <button class='openbtn openbtnMobile' onclick='openMenu();'>☰</button>
             <img alt='logo' src='imagens/logo.svg' />
             <h1>Piupiuwer</h1>
         </div>
         <div class='toolsContainer toolsContainerTablet'>
-            <div class='searchBlock'>
+            <div class='searchBlock searchBlockMobile'>
                 <div class="searchContainer">
                     <input placeholder='Pesquisar' class='searchDefault'/>
-                    <img src='imagens/magnifier.svg' alt='search' class='searchIcon'>
+                    <img src='imagens/magnifier.svg' alt='search' class='searchIcon searchIconTablet'>
+                    <div class='searchResultsDefault'></div>
                 </div>
-                <div class='searchResultsDefault'></div>
             </div>
-            <div class='logOut logOutMedium'>
+            <div class='logOut logOutMedium logOutMobile logOutMobile'>
                 <img alt='logout' src='imagens/logout.svg' />
                 <p>Sair</p>
             </div>
         </div>
     </header>
         <div id='feedPageContent'>
-            <div class='menu menuMedium menuLargeHeight menuTablet'>
-                <div class="profile">
-                    <div class="profileImage"></div>
+            <div class='menu menuMedium menuLargeHeight menuTablet menuMobile'>
+                <a href="javascript:void(0)" class="closebtn showUpMobile" onclick="closeMenu()">&times;</a>
+                <div class="profile profileMobile">
+                    <div class="profileImage profileImageMobile"> <img src='imagens/Lucas.jpg' alt='Foto de Perfil' /></div>
                     <div class="profileInformation">
-                        <p class="nameProfile nameProfileMedium">Lucas Garcia</p>
+                        <p class="nameProfile nameProfileMedium">Lucas Von</p>
                         <p id="goToProfile" class="goToProfile goToProfileMedium">Ir para o perfil</p>
                     </div>
                 </div>
                 <ul>
-                    <li><a class='MenuItemContainer'><img src='./imagens/botao-home.svg' alt='icon-home'/><p>Feed</p></a></li>
+                    <li><a class='MenuItemContainer'><img src='imagens/botao-home.svg' alt='icon-home'/><p>Feed</p></a></li>
+                    <li><a class='logOutMenuDefault MenuItemContainer logOutMenuMobile'><img src='imagens/logout.svg' alt='logOut2'/><p>Sair</p></a></li>
                     <li><a class='MenuItemContainer'><img src='imagens/amizade (1).svg' alt='amigos'/><p>Amigos</p></a></li>
                     <li><a class='MenuItemContainer'><img src="imagens/padlock.svg"/> <p>Alterar senha</p></a></li>
                 </ul>
             </div>
-                <div id='feed' class="feed feedTablet">
+                <div id='feed' class="feed feedTablet feedMobile">
                     <h2><u>Feed</u></h2>
-                    <div id='publishPiu' class="publishPiu publishPiuTablet">
-                        <div id='publishPiuHeader'><p>Publicar um novo Piu</p></div>
-                        <div id='publishField'>
-                            <div id='photoPublish' class='photoPublish photoPublishTablet'></div>
-                            <div id='postWriteContainer' class='postWriteContainer postWriteContainerTablet'>
-                                <textarea id='postWrite'></textarea>
-                                <span class='postWriteErrorHidden postWriteErrorHiddenTablet'></span>
+                    <div id='publishPiu' class="publishPiu publishPiuTablet publishPiuMobile publishPiuMobileSmall">
+                        
+                        <form>
+                            <label id='publishPiuHeader' for='piu'><p>Publicar um novo Piu</p></label>
+                            <div id='publishField'>
+                                <div id='photoPublish' class='photoPublish photoPublishTablet photoPublishMobile photoPublishMedium'><img src='imagens/Lucas.jpg' alt='Foto de Perfil'/></div>
+                                <div id='postWriteContainer' class='postWriteContainer postWriteContainerTablet postWriteContainerMobile'>
+                                    <textarea type='text' class='postWrite' name='piu' placeholder='Digite aqui um novo Piu'></textarea>
+                                    <span class='postWriteErrorHidden postWriteErrorHiddenTablet'></span>
+                                </div>
                             </div>
-
-                        </div>
-                        <div id='interactionBlockPublish'>
-                            <span id='cont'>0/140</span>
-                            <button id='publishButton' class='publishButton publishButtonMedium'>PUBLICAR</button>
-                            <button id='cleanButton' class='cleanButton cleanButtonMedium'>LIMPAR</button>
-                        </div>
+                            <div id='interactionBlockPublish'>
+                                <span class='cont'>0/140</span>
+                                <button type='submit' id='publishButton' class='publishButton publishButtonMedium publishButtonMobile'>PUBLICAR</button>
+                                <button id='cleanButton' class='cleanButton cleanButtonMedium cleanButtonMobile'>LIMPAR</button>
+                            </div>
+                        </form>
                     </div>
-                    <div id='postArea' class="postArea postAreaTablet">
+                    <div id='postArea' class="postArea postAreaTablet postAreaMobile postAreaMobileSmall ">
                     </div>
                 </div>
         </div>
