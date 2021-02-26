@@ -1,3 +1,9 @@
+/**
+ *  Nome: Lucas von Ancken Garcia
+ *  Email: lucas.ancken@polijunior.com.br
+ *  Entrega: Piupiwer/ Summer 2021
+ */
+
 body {
     margin: 0;
     background-color: #00B4D8;
@@ -321,10 +327,22 @@ a {
         font-family: 'Poppins', sans-serif;
         color: #08045E;
         font-weight: bold;
+        display: flex;
+        align-items: center;
     }
+
+
 
     #publishPiuHeader p {
         margin: 0;
+    }
+
+    .birdIcon {
+        height: 40px;
+        width: auto;
+        margin-bottom: 2%;
+        margin-left:5px;
+
     }
 
     #photoPublish {
@@ -1022,11 +1040,12 @@ a {
         }
 
         .logoMobile {
-            margin-left: 8px;
+            margin-left: 5vw;
         }
 
         .logoMobile h1 {
             font-size: 20px;
+            margin: 0 0 0 5px;
         }
 
         .logoMobile img {
@@ -1056,6 +1075,14 @@ a {
 
         .profileMobile img {
             width: 50px;
+        }
+
+        .birdIconMobile {
+            height: 25px;
+        }
+
+        .searchIconMobile {
+            top: 30%;
         }
 
     }

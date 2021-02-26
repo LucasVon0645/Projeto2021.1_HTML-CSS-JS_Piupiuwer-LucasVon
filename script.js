@@ -1,8 +1,18 @@
+/**
+ *  Nome: Lucas von Ancken Garcia
+ *  Email: lucas.ancken@polijunior.com.br
+ *  Entrega: Piupiwer/ Summer 2021
+ */
+
+
 let postWrite = document.querySelector('.postWrite');
 let filterArray = [];
-let selectResultOnClick = false;
 
 
+/** A função a seguir realiza a requisição 'GET' para obter os
+ * dados de todos os posts. Em seguida, esses posts são adicionados
+ * na página uma vez que a resposta foi recebida.
+ **/
 
 const getPosts = async () => 
 {
@@ -19,8 +29,18 @@ const getPosts = async () =>
         }
 }
 
+getPosts();
 
 
+/** A função a seguir é acionada toda vez que o usuário digitar algo no 
+ * campo para adicionar novos posts. Ela é utilizada para atualizar o contador
+ * de número de caracteres e imprimir uma mensagem de erro caso o número
+ * de caracteres seja superior a 140. A mensagem de erro é mostrada da
+ * seguinte forma:
+ *  - o campo de digitação fica vermelho (classe = postWriteErrorVisible)
+ *  -uma div é revelada com uma mensagem de erro (classe = postWriteErrorVisible)
+ *  - o contador permanece em vermelho (classe = warning)
+ **/
 
 function showNumberOfChars () 
 {
@@ -44,6 +64,13 @@ function showNumberOfChars ()
         error.classList.remove('postWriteErrorVisible')}
 }
 
+
+/** A função a seguir percorre a resposta obtida na API e cria, para 
+ * cada post, elementos HTML para abranger as informações e os botões
+ * de interação. 'response' é passada como parâmetro pela função
+ * 'get post'.
+ **/
+
 function addPostsfromOtherUsers (response) 
 {
     response.forEach(postInformation => {
@@ -64,6 +91,12 @@ function addPostsfromOtherUsers (response)
     });
 
 }
+
+
+/** A função a seguir é responsável por publicar o post do usuário 
+ * quando o botão "publicar" é apertado. Como a função só é usada no 
+ * evento desse botão, o parâmetro 'event' é utilizado.
+ **/
 
 function addMyPost (event) 
 {
@@ -91,6 +124,15 @@ function addMyPost (event)
 }
 
 
+/** A função a seguir é utilizada dentro da função 'addMyPost' para recuperar
+ * a mensagem escrita na TextArea da publicação. A função retorna: 
+ * 
+ * - um objeto ('postInformation') com as informações necessárias para criar o post, somente caso 
+ * o número de caracteres seja inferior a 140.
+ * - 0 caso a mensagem esteja vazia
+ * - 1 quando a mensagem tenha ultrapassado o número máximo de caracteres.
+ **/
+
 function getDataMyPost () 
 {
     let message = document.querySelector(".postWrite").value;
@@ -109,6 +151,12 @@ function getDataMyPost ()
     return 1;
 }
 
+
+/** A função retorna uma string correspondendo ao dia e ao horário
+ * atual. Essa data é adicionada aos posts no momento de sua 
+ * criação.
+ **/
+
 function currentDate () 
 {
 
@@ -123,6 +171,13 @@ function currentDate ()
 
 }
 
+
+/** A função abaixo recebe um post (elemento HTML div) 
+ * e adiciona nesse elemento uma nova div 'profileInfo' contendo todas 
+ * as informações presentes em postInformation (objeto obtido na API ou criado em getDataMyPost).
+ * myPost é do tipo boolean e indica se o post vem do usuário (true) 
+ * ou da API (false).
+ **/
 
 function addProfileInfo (post, postInformation, myPost) 
 {
@@ -165,6 +220,12 @@ function addProfileInfo (post, postInformation, myPost)
     post.appendChild(profileInfo);
 }
 
+
+/** A função a seguir recebe um elemento HTML div ('post') e  um objeto
+ * contendo as informações presentes em postInformation (objeto obtido na 
+ * API ou criado em getDataMyPost).
+ **/
+
 function addMessagePost (post, postInformation)
 {
     let message = document.createElement("p");
@@ -173,6 +234,17 @@ function addMessagePost (post, postInformation)
 
     post.appendChild(message);
 }
+
+
+/** A função a seguir recebe  uma div 'interaction' e adiciona
+ * nela os elementos necessários para construir a ferramenta
+ * de like. A string className recebe o nome da classe
+ * que será adicionada a div de likes (a div de likes de um 
+ * post vindo da API é diferente daquela que vem do usuário em 
+ * termos de estrutura HTML/CSS).
+ * Além disso, um evento é adicionada ao botão/ícone de likes
+ * que funciona como toogle.  
+ * **/
 
 function addLikesToPost (interaction, className) 
 {
@@ -198,6 +270,17 @@ function addLikesToPost (interaction, className)
     interaction.appendChild(likes);
 }
 
+
+/** A função a seguir recebe  uma div 'interaction' e adiciona
+ * nela os elementos necessários para construir a ferramenta
+ * de destaque. A string className recebe o nome da classe
+ * que será adicionada a div de destaque (a div de destaque de um 
+ * post vindo da API é diferente daquela que vem do usuário em 
+ * termos de estrutura HTML/CSS).  myPost é do tipo boolean
+ * e indica se o post vem da API ou não.
+ * Além disso, um evento é adicionada ao botão/ícone de likes
+ * que funciona como toogle. 
+ * */
 
 function addHighlightToPost (interaction, myPost) 
 {
@@ -229,6 +312,11 @@ function addHighlightToPost (interaction, myPost)
 }
 
 
+/** A função abaixo adiciona as divs de interação
+ * para os posts  vindos da API (somente as divs de 
+ * likes e de destaque). 'Post' é uma div criada em 
+ * addPostsfromOtherUsers a partir da API.
+ **/
 
 function addInteractionToPost (post) 
 {
@@ -241,7 +329,18 @@ function addInteractionToPost (post)
     post.appendChild(interaction);
 }
 
-function addInteractionToMyPost (post) {
+/** A função abaixo adiciona as divs de interação
+ * para os posts vindos do usuário (divs de 
+ * likes, destaque, apagar e editar) na div de post. 
+ * 'Post' é uma div criada em  'addMyPosts'
+ * a ppartir da mensagem do usuário.
+ * Além disso, ela também adiciona os 
+ * eventos para o botão de edição e para o botão de apagar
+ * são inseridos.
+ **/
+
+function addInteractionToMyPost (post)
+{
 
     let interaction = document.createElement("div");
     interaction.classList.add("interactionMyPost");
@@ -300,31 +399,56 @@ function addInteractionToMyPost (post) {
     interaction.appendChild(divLikeHighlight);
 
     post.appendChild(interaction);
-    
-
 }
 
 
 
-function cleanPostWrite (event) {
+/** A função a seguir é utlizada no evento do botão
+ * 'Limpar' da área de publicação do usuário.
+ **/
+
+function cleanPostWrite (event) 
+{
     event.preventDefault();
     document.querySelector(".postWrite").value = "";
     showNumberOfChars();
 }
 
 
-getPosts();
 
-function openMenu() {
+/** A função abaixo é somente útil para a versão mobile do site.
+ * Ela é utilizada para mostrar o "menu  que permanece escondido"
+ * na lateral. Por padrão na versão mobile, o menu tem largura
+ * igual a zero.
+ **/
+
+function openMenu() 
+{
     document.querySelector(".menu").style.width = "400px";
-  }
+}
 
-function closeMenu() {
+
+
+/** A função abaixo é somente útil para a versão mobile do site.
+ * Ela é utilizada para esconder o menu quando o usuário o fecha.
+ * Por padrão na versão mobile, o menu tem largura
+ * igual a zero. 
+ **/
+
+function closeMenu() 
+{
     document.querySelector(".menu").style.width = "0";
-  }
+}
 
+/** A função abaixo é usada para colocar na barra de pesquisa 
+ * a "sugestão" de pesquisa/filtro que o usuário clicou na barra de 
+ * resultados da pesquisa (logo abaixo do campo de digitação). 
+ * Consequentemente, os posts são filtrados. A função atua no evento
+ * das tags span no campo de resultados.
+ **/
 
-function bringResult () {
+function bringResult () 
+{
     let result = this.innerHTML;
     let searchResults = document.querySelector('.searchResultsDefault');
     let searchBar = document.querySelector(".searchDefault")
@@ -334,6 +458,14 @@ function bringResult () {
     searchBar.classList.remove("onSearch");
 
 }
+
+/** A função a seguir procura nos posts da página o posts dos 
+ * usuários que contém a palavra digtada pelo usuário. Além disso, 
+ * essa função também filtra (só mostra os posts condizentes com 
+ * a pesquisa.Adiciona-se também o evento em cada uma das tags
+ * span da lista de resultados para permitir o uso da função
+ * bringResults;
+ **/
 
 function searchUser () 
 {   
@@ -377,6 +509,10 @@ function searchUser ()
     }
 }
 
+/** A função a seguir desativa o modo de edição do posto do usuário 
+ * quando este aperta no botão salvar ou no ícone. Além disso, a 
+ * função deixa invsivel a palavra 'salvar' depois disso.
+ */
 function savePostChange () 
 {
     let postText = this.parentNode.parentNode.parentNode.childNodes[1];
@@ -386,6 +522,12 @@ function savePostChange ()
     this.parentNode.childNodes[0].src = "imagens/editar.svg";
 }
 
+
+/** A função a seguir só é utilizada apenas na versão mobile.
+ * Ela é utilizada para evitar que o menu desapareça quando 
+ * o usuário vira a tela do celular.
+*/
+
 $(window).resize(() => {
     if (this.screen.width > 480) {
         let menu = document.querySelector(".menu");
@@ -394,7 +536,9 @@ $(window).resize(() => {
 })
 
 
-
+/** Todos os eventos adicionados fora das 
+ * funções estão listados abaixo 
+ */
 
 
 document.querySelector(".postWrite").addEventListener("input", showNumberOfChars);
