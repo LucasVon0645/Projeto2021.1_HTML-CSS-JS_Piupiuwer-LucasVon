@@ -256,10 +256,14 @@ function addLikesToPost (interaction, className)
     imageLike.alt = "like";
     imageLike.addEventListener("click", function () {
         number = Number(this.parentNode.childNodes[0].innerHTML);
-        if (number)
-            this.parentNode.childNodes[0].innerHTML = 0;
-        else 
-        this.parentNode.childNodes[0].innerHTML = 1;
+        console.log(this.classList)
+        if (!this.classList.contains("liked")) {
+            this.classList.add("liked");
+            this.parentNode.childNodes[0].innerHTML = number + 1;}
+
+        else {
+            this.classList.remove("liked")
+            this.parentNode.childNodes[0].innerHTML = number - 1;}
 
     })
 
