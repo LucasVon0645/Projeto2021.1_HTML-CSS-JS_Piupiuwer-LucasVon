@@ -471,9 +471,11 @@ function searchUser ()
 {   
     let searchResults = document.querySelector('.searchResultsDefault');
     let searchBar = document.querySelector(".searchDefault");
+    console.log(searchResults)
     let word = searchBar.value;
     searchResults.innerHTML = "";
     let listOfPosts = document.querySelectorAll(".post")
+    let listOfNames = [];
     if (word.length > 0) {
         document.querySelector(".searchIcon").classList.add("invisible");
         if (searchBar) searchBar.classList.add("onSearch");
@@ -482,12 +484,15 @@ function searchUser ()
         listOfPosts.forEach(element => {
             nome = element.childNodes[0].childNodes[1].childNodes[0].innerHTML;
             if (expression.test(nome)) {
-                let span = document.createElement('span');
-                span.innerHTML = nome;
-                span.addEventListener("click", bringResult);
-                searchResults.appendChild(span);
-                element.classList.remove("invisible");
-            }
+                console.log(listOfNames.includes(nome));
+                if (!listOfNames.includes(nome)){
+                    listOfNames.push(nome);
+                    let span = document.createElement('span');
+                    span.innerHTML = nome;
+                    span.addEventListener("click", bringResult);
+                    searchResults.appendChild(span);
+                    element.classList.remove("invisible");}
+                }
             else {
                 element.classList.add("invisible");
             }
